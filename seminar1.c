@@ -101,7 +101,7 @@ void search(FILE* fp) {
 	printf("search name :");
 	scanf("%s", search_name);
 	printf("\n");
-	printf("\---contact ---");
+	printf("---contact ---");
 	fseek(fp, 0, SEEK_SET); //처음으로 이동
 	for (n = 0; n < nd; n++) {
 		fread(&data, sizeof(data), 1, fp);
@@ -113,13 +113,13 @@ void search(FILE* fp) {
 
 void contact(student* data) {
 	while (getchar() != '\n');
+	//fflush(stdin);// 입력버퍼인 stdin 을 지워준다.  이것보다는 위에  while문을 사용하는게 좋다.
+	//원래대로는 fflush 함수의 인자로 stdin 이 전달될 수 없지만 visual studio에서만 예외적으로 허용되어있다.
+	//실제로 다른 컴파일러에서는 사용 no
 	printf("Name :");
 	gets(data->name);
 }
 void update_data(student* data) {
-	//fflush(stdin);// 입력버퍼인 stdin 을 지워준다.  이것보다는 위에  while문을 사용하는게 좋다.
-	//원래대로는 fflush 함수의 인자로 stdin 이 전달될 수 없지만 visual studio에서만 예외적으로 허용되어있다.
-	//실제로 다른 컴파일러에서는 사용 no
 	printf("Name :");
 	gets(data->name);
 	printf("Phone :");
