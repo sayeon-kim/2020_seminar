@@ -125,7 +125,7 @@ void main() {
 		//파일 이 없으면 
 		fp = fopen(FILENAME, "w+b");
 		if (fp == NULL) {
-			printf("파일을 열 수 없ㅅ브닏. \n");
+			printf("파일을 열 수 . \n");
 			exit(0);
 		 }
 	}
