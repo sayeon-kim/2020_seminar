@@ -134,12 +134,12 @@ void main() {
 		do {
 			menu();
 			scanf("%d", &menunum);
-		} while (menunum < 1 || menunum >6);
-		if (menunum == 6)break;
+		} while (menunum < 1 || menunum >7);
+		if (menunum == 7)break;
 		switch (menunum) {
 		case 1: add(fp);
 			break;
-		case 2 : list(fp);
+		case 2: list(fp);
 			break;
 		case 3: search(fp);
 			break;
@@ -147,6 +147,9 @@ void main() {
 			break;
 		case 5: delete(fp);
 			break;
+		case 6: printf("이예진 김사연 화이팅*^^*~~!!!!!!!!!!!!!!!!!!!!");
+			break;
+		}
 		}
 	}
 }
