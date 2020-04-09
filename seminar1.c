@@ -147,7 +147,8 @@ void main() {
 			break;
 		case 5: delete(fp);
 			break;
-		case 6: printf("이예진 김사연 화이팅*^^*~~!!!!!!!!!!!!!!!!!!!!");
+		case 6: printf(" -----이스터에그-----"
+			printf("이예진 김사연 화이팅*^^*~~!!!!!!!!!!!!!!!!!!!!");
 			break;
 		}
 		}
