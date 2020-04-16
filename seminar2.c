@@ -25,7 +25,7 @@ FILE* userlist;	/*user list file*/
 int nusers; /*user number*/
 FILE* fllist;	/*lesson list file*/
 FILE* fuser;	/*current user data file*/
-//lesson cl;	/*current lesson*/
+lesson cl;	/*current lesson*/
 user cu;	/*current user*/
 
 
@@ -80,9 +80,6 @@ void loadFiles(void) {
 }
 
 
-int mainmenu(void) {
-
-}
 
 int listUser(void) {
 	
@@ -110,12 +107,13 @@ int listUser(void) {
 }
 
 int userSelectMenu(void) {
-	
+	return 0;
 }
 
+
 void createUser(void) {
-	
-	
+
+
 	printf("=========================== \n");
 	printf("  ADD A NEW USER \n");
 	printf("Name :");
@@ -131,7 +129,7 @@ void createUser(void) {
 	printf("=========================== \n");
 	nusers++;
 	cu.usernum = nusers;
-	fseek(userlist, 0, SEEK_END); 
+	fseek(userlist, 0, SEEK_END);
 	fwrite(&cu, sizeof(user), 1, userlist);// 파일에 data위치의 데이타 size *n개 쓰기
 
 	//printf(userfilename, "%s.dat", cu.name);
@@ -144,15 +142,64 @@ void createUser(void) {
 
 
 
+
+
 int listLesson(void) {
+	lesson l1, l2, l3;
+	int n;
+	int option;
+	char filename[12];
+	/*open the lesson list file and list them all*/
+	fllist = fopen("lessonlist.dat", "rb");
+	fread(&n, sizeof(int), 1, fllist);
+	printf("\nnumber of lesson: %d", n);/*3 lessons only*/
+	fread(&l1, sizeof(lesson), 1, fllist);	/*read*/
+	printf("\n(1) %.8s %ld characters", l1.title, l1.length);
+	fread(&l2, sizeof(lesson), 1, fllist);	/*read*/
+	printf("\n(2) %.8s %ld characters", l2.title, l2.length);
+	fread(&l3, sizeof(lesson), 1, fllist);	/*read*/
+	/*now allow the use to select correct user name from the list*/
+	
 
 }
 void Session() {
 	//직접 속도 계산하는 타자연습 구현하는부분인거같음
 }
+int mainmenu(void) {
+	int menunum;
+	while (1)
+	{
+		printf("***MAIN MENU***\n\n");
+		printf("<1> Select User\n");
+		printf("<2> Stastics\n");
+		printf("<3> View User Records\n");
+		printf("<4> About\n");
+		printf("<5> Quit\n");
+		printf("Enter the choice : ");
+
+		scanf("%d", &menunum);
+
+		switch (menunum) {
+		case 1: createUser();
+			loadFiles();
+			userSelectMenu();
+			break;
+		case 2: listUser();
+			break;
+		case 3: listLesson();
+			break;
+		case 4: printf("\n\n매우 어려운 과제였습니다. 그래도 수고한 팀원에게 박수를 보냅니다.\n\n");
+			break;
+		}
+		if (menunum == 5) {
+			printf("\n\n 질문 있으실까요? \n 이상 마치겠습니다.\n\n");
+			break;
+		}
+	}
+
+}
 
 void main() {
-	loadFiles();
-	createUser();
-	listUser();
+	mainmenu();
+	
 }
